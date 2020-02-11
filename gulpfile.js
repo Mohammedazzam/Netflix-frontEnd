@@ -17,4 +17,17 @@ function styles(){
     .pipe(rename('main.min.css'))
     .pipe(gulp.dest('dist/css'))
 }
+
+function bootstrap_styles(){
+    return gulp.src('src/scss/bootstrap/bootstrap.scss')
+    .pipe(sourcemaps.init())
+    .pipe(sass({ outputStyle: 'compressed' })).on('error', sass.logError)
+    .pipe(autoprefixer())
+    .pipe(sourcemaps.write())
+    .pipe(rename('bootstrap.min.css'))
+    .pipe(gulp.dest('dist/css'))
+}
+
+
 exports.styles = styles;
+exports.bootstrap_styles = bootstrap_styles;

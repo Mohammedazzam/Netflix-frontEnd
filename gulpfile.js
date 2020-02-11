@@ -19,7 +19,7 @@ function styles(){
 }
 
 function bootstrap_styles(){
-    return gulp.src('src/scss/bootstrap/bootstrap.scss')
+    return gulp.src('src/bootstrap/bootstrap.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({ outputStyle: 'compressed' })).on('error', sass.logError)
     .pipe(autoprefixer())

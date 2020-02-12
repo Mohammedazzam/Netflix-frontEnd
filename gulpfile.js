@@ -8,7 +8,7 @@ var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 
 
-function styles(){
+async function styles(){
     return gulp.src('src/scss/styles.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({ outputStyle: 'compressed' })).on('error', sass.logError)
@@ -18,7 +18,7 @@ function styles(){
     .pipe(gulp.dest('dist/css'))
 }
 
-function bootstrap_styles(){
+async function bootstrap_styles(){
     return gulp.src('src/bootstrap/bootstrap.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({ outputStyle: 'compressed' })).on('error', sass.logError)
@@ -29,5 +29,11 @@ function bootstrap_styles(){
 }
 
 
-exports.styles = styles;
-exports.bootstrap_styles = bootstrap_styles;
+// exports.styles = styles;
+// exports.bootstrap_styles = bootstrap_styles;
+
+exports.default=gulp.series(
+    styles,
+    bootstrap_styles
+)
+    

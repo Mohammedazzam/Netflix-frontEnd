@@ -28,12 +28,18 @@ async function bootstrap_styles(){
     .pipe(gulp.dest('dist/css'))
 }
 
+async function watch() {
+    gulp.watch('src/scss/**/*.scss',styles);  
+    gulp.watch('src/bootstrap/**/*.scss',bootstrap_styles) 
+}
+
 
 // exports.styles = styles;
 // exports.bootstrap_styles = bootstrap_styles;
 
-exports.default=gulp.series(
+exports.default=gulp.series( //function لكل  exportsهذا عبارة عن كود مختصر بدل ما بضل أعمل 
     styles,
-    bootstrap_styles
+    bootstrap_styles,
+    watch
 )
     

@@ -22,8 +22,6 @@
     "android >= 4",
     "bb >= 10"
   ],
-
-
   "devDependencies": {
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
@@ -32,6 +30,7 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.5"
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2"
   }
 }

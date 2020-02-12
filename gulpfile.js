@@ -6,49 +6,59 @@ var imagemin = require('gulp-imagemin');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
+var uglify = require('gulp-uglify');
 
 
-async function styles(){
+async function styles() {
     return gulp.src('src/scss/styles.scss')
-    .pipe(sourcemaps.init())
-    .pipe(sass({ outputStyle: 'compressed' })).on('error', sass.logError)
-    .pipe(autoprefixer())
-    .pipe(sourcemaps.write())
-    .pipe(rename('main.min.css'))
-    .pipe(gulp.dest('dist/css'))
-    .pipe(browsersync.stream())
+        .pipe(sourcemaps.init())
+        .pipe(sass({ outputStyle: 'compressed' })).on('error', sass.logError)
+        .pipe(autoprefixer())
+        .pipe(sourcemaps.write())
+        .pipe(rename('main.min.css'))
+        .pipe(gulp.dest('dist/css'))
+        .pipe(browsersync.stream())
 }
 
-async function bootstrap_styles(){
+async function bootstrap_styles() {
     return gulp.src('src/bootstrap/bootstrap.scss')
-    .pipe(sourcemaps.init())
-    .pipe(sass({ outputStyle: 'compressed' })).on('error', sass.logError)
-    .pipe(autoprefixer())
-    .pipe(sourcemaps.write())
-    .pipe(rename('bootstrap.min.css'))
-    .pipe(gulp.dest('dist/css'))
-    .pipe(browsersync.stream())
+        .pipe(sourcemaps.init())
+        .pipe(sass({ outputStyle: 'compressed' })).on('error', sass.logError)
+        .pipe(autoprefixer())
+        .pipe(sourcemaps.write())
+        .pipe(rename('bootstrap.min.css'))
+        .pipe(gulp.dest('dist/css'))
+        .pipe(browsersync.stream())
 
+}
+
+async function scripts() {
+    gulp.src('src/js/**/*.js')
+        .pipe(uglify())
+        .pipe(rename('main.min.js'))
+        .pipe(gulp.dest('dist/js'))
+        .pipe(browsersync.stream());
 }
 
 async function watch() {
     browsersync.init({
-        server:{
-            baseDir:'./'
+        server: {
+            baseDir: './'
         }
     })
 
-        gulp.watch('src/scss/**/*.scss',styles);  
-        gulp.watch('src/bootstrap/**/*.scss',bootstrap_styles) 
+    gulp.watch('src/scss/**/*.scss', styles);
+    gulp.watch('src/bootstrap/**/*.scss', bootstrap_styles)
+    gulp.watch('src/js/**/*.js', scripts);
 }
 
 
 // exports.styles = styles;
 // exports.bootstrap_styles = bootstrap_styles;
 
-exports.default=gulp.series( //function لكل  exportsهذا عبارة عن كود مختصر بدل ما بضل أعمل 
+exports.default = gulp.series( //function لكل  exportsهذا عبارة عن كود مختصر بدل ما بضل أعمل 
     styles,
     bootstrap_styles,
-    watch
+    watch,
+    scripts
 )
-    

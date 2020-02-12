@@ -16,6 +16,7 @@ async function styles(){
     .pipe(sourcemaps.write())
     .pipe(rename('main.min.css'))
     .pipe(gulp.dest('dist/css'))
+    .pipe(browsersync.stream())
 }
 
 async function bootstrap_styles(){
@@ -26,11 +27,19 @@ async function bootstrap_styles(){
     .pipe(sourcemaps.write())
     .pipe(rename('bootstrap.min.css'))
     .pipe(gulp.dest('dist/css'))
+    .pipe(browsersync.stream())
+
 }
 
 async function watch() {
-    gulp.watch('src/scss/**/*.scss',styles);  
-    gulp.watch('src/bootstrap/**/*.scss',bootstrap_styles) 
+    browsersync.init({
+        server:{
+            baseDir:'./'
+        }
+    })
+
+        gulp.watch('src/scss/**/*.scss',styles);  
+        gulp.watch('src/bootstrap/**/*.scss',bootstrap_styles) 
 }
 
 

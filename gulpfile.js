@@ -50,6 +50,7 @@ async function watch() {
     gulp.watch('src/scss/**/*.scss', styles);
     gulp.watch('src/bootstrap/**/*.scss', bootstrap_styles)
     gulp.watch('src/js/**/*.js', scripts);
+    gulp.watch('./*.html').on('change', browsersync.reload);
 }
 
 
@@ -59,6 +60,6 @@ async function watch() {
 exports.default = gulp.series( //function لكل  exportsهذا عبارة عن كود مختصر بدل ما بضل أعمل 
     styles,
     bootstrap_styles,
+    scripts,
     watch,
-    scripts
 )

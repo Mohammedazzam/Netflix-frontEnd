@@ -58,8 +58,7 @@ async function watch() {
 // exports.bootstrap_styles = bootstrap_styles;
 
 exports.default = gulp.series( //function لكل  exportsهذا عبارة عن كود مختصر بدل ما بضل أعمل 
-    styles,
-    bootstrap_styles,
+    gulp.parallel([styles, bootstrap_styles]), //هيك دمجتهم مع بعض وراح يشغهم مع بعض
     scripts,
     watch,
 )

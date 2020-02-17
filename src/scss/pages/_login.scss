@@ -2,7 +2,9 @@
     height: 100vh;
     position: relative;
     background: $black;
-    padding: 8% 0;
+    display: flex;
+    text-justify: center;
+    align-items: center;
     .login_bg {
         position: absolute;
         width: 100%;

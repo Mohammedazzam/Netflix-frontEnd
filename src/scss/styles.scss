@@ -1,4 +1,9 @@
 //bootstrap variable
 @import "../bootstrap/functions";
 @import "../bootstrap/variables";
-@import "pages/login"
+//pages
+@import "pages/login";
+
+body {
+  font-family: 'Roboto', sans-serif;
+}

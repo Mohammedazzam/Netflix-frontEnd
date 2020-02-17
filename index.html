@@ -16,13 +16,14 @@
     <!--vendor css-->
     <link rel="stylesheet" href="dist/css/vendor.min.css">
 
+    <!--google font-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,500,700&display=swap" rel="stylesheet">
 
     <!--main styles -->
     <link rel="stylesheet" href="dist/css/main.min.css">
 </head>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
-
+<body>
 
 
     <!--jquery-->
@@ -37,6 +38,42 @@
 
     <!--main scripts-->
     <script src="dist/js/main.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+
+            $("#banner .movies").owlCarousel({
+                loop: true,
+                nav: false,
+                items: 1,
+                dots: false,
+            });
+
+            $(".listing .movies").owlCarousel({
+                loop: true,
+                nav: false,
+                stagePadding: 50,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    900: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                },
+                dots: false,
+                margin: 15,
+                loop: true,
+            });
+
+        });
+    </script>
 </body>
 
 </html>

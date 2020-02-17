@@ -1,5 +1,16 @@
-.box {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+//bootstrap variable
+@import "../bootstrap/functions";
+@import "../bootstrap/variables";
+
+
+.fw-300 {
+  font-weight: 300;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-700 {
+  font-weight: 700;
 }

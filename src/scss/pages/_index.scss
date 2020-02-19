@@ -1,4 +1,7 @@
 .banner {
+    .form-control [type="search"]::placeholder {
+        color: lightgray;
+    }
     .movie {
         height: 100vh;
         position: relative;
